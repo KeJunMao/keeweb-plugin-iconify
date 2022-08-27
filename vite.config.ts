@@ -18,7 +18,11 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
+        "models/group-model",
         "views/icon-select-view",
+        "views/list-view",
+        "views/detail/detail-view",
+        "views/menu/menu-item-view",
         "framework/views/view",
         "const/icon-map",
         "models/file-model",

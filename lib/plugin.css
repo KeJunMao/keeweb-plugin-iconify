@@ -18,3 +18,18 @@
   align-items: center;
   justify-content: center;
 }
+
+.menu__item-body {
+  display: flex;
+  align-items: center;
+}
+
+.menu__item-icon--iconify {
+  width: auto;
+  height: auto;
+  position: relative;
+  top: auto;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.2em;
+}
