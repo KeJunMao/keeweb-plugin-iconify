@@ -17,6 +17,11 @@ Set custom icon from Iconify
     <img src="https://api.netlify.com/api/v1/badges/26fb8954-3029-4e1c-aba0-2baaf24186b1/deploy-status" alt="Netlify Status" />
   </a>
 </p>
+
+## Install
+
+Go to `Settings` → `Plugins` and `Add plugin from URL` : [https://keeweb-plugin-iconify.netlify.app](https://keeweb-plugin-iconify.netlify.app)
+
 ## Demo
 
 <p align="center">
