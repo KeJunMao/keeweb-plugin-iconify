@@ -1,6 +1,6 @@
 [build]
   publish = "dist"
-  command = "echo -----BEGIN PRIVATE KEY-----\\n$PRIVATE_KEY\\n-----END PRIVATE KEY----- > private_key.pem && npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
+  command = "echo $PRIVATE_KEY > private_key.pem && npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
 [[headers]]
   for = "/*"
   [headers.values]
