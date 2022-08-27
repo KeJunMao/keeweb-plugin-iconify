@@ -17,7 +17,15 @@ export default defineConfig({
       formats: ["cjs"],
     },
     rollupOptions: {
-      external: ["views/icon-select-view"],
+      external: [
+        "views/icon-select-view",
+        "framework/views/view",
+        "const/icon-map",
+        "models/file-model",
+        "util/formatting/icon-url-format",
+        "models/entry-model",
+        "kdbxweb",
+      ],
     },
   },
 });

@@ -12,7 +12,8 @@
 .icon-select__items--iconify label {
   font-weight: bold;
 }
-.icon-select__items--iconify .icon-select__icon {
+.icon-select__items--iconify .icon-select__icon,
+.icon-select__items--iconify-icons .icon-select__icon {
   display: flex;
   align-items: center;
   justify-content: center;

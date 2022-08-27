@@ -1,34 +1,47 @@
 import * as IconifyIcon from "iconify-icon";
 // @ts-ignore
 import { IconSelectView } from "views/icon-select-view";
-function render() {
-  KeewebPluginIconifyIconSelectView.render.apply(this);
+// @ts-ignore
+import { View } from "framework/views/view";
+// @ts-ignore
+import { IconMap } from "const/icon-map";
 
-  function IconDataToImage(iconData, onload) {
-    if (iconData) {
-      const svgSource = `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 ${iconData.width} ${iconData.height}">
-      ${iconData.body}
-    </svg>`;
-      const img = new Image(iconData.width, iconData.height);
-      const svg = new Blob([svgSource], { type: "image/svg+xml" });
-      img.onload = () => {
-        onload(img);
-      };
-      img.src = URL.createObjectURL(svg);
+function createIconEl(icon) {
+  return $("<iconify-icon/>")
+    .attr({
+      icon,
+      "data-val": "iconify",
+      "data-special": "iconify",
+      mode: "svg",
+    })
+    .addClass("icon-select__icon")
+    .clone(false, true);
+}
+
+function render() {
+  const customIcons = this.model.file.getCustomIcons();
+  const customIconify = {};
+  for (let key in customIcons) {
+    const icon = customIcons[key];
+    if (icon.includes("#iconify#")) {
+      customIconify[key] = customIcons[key].replace("#iconify#", "");
+      delete customIcons[key];
     }
   }
+  const hasCustomIcons = Object.keys(customIcons).length > 0;
+  this.__proto__.__proto__.render.call(this, {
+    sel: this.model.iconId,
+    icons: IconMap,
+    canDownloadFavicon: !!this.model.url,
+    customIcons,
+    hasCustomIcons,
+  });
 
   const iconifyContainer = $("<div />").addClass([
     "icon-select__items",
     "icon-select__items--iconify",
   ]);
-  const icon = $("<iconify-icon/>")
-    .attr({
-      icon: "line-md:iconify1",
-      "data-val": "iconify",
-      "data-special": "iconify",
-    })
-    .addClass("icon-select__icon");
+  let icon = createIconEl("line-md:iconify1");
   const label = $("<label />")
     .attr({
       for: "iconify-input",
@@ -41,16 +54,16 @@ function render() {
         e.stopPropagation();
         const iconName = (e.target as HTMLInputElement).value;
         const [prefix, name] = iconName.split(":");
-        if (prefix && name && prefix.length > 1 && name.length > 2) {
-          icon.attr({ icon: iconName });
-          IconifyIcon.loadIcon(iconName)
-            .then((iconData) => {
-              IconDataToImage(iconData, (img) => {
-                this.setSpecialImage(img, "iconify");
-              });
-            })
-            .catch((_e) => {});
-        }
+        try {
+          if (prefix && name && prefix.length > 1 && name.length > 2) {
+            icon.attr({ icon: "eos-icons:loading" });
+            IconifyIcon.loadIcon(iconName)
+              .then((_) => {
+                icon.attr({ icon: iconName });
+              })
+              .catch((_e) => {});
+          }
+        } catch (error) {}
       },
       keypress: (e) => e.stopPropagation(),
     });
@@ -58,16 +71,30 @@ function render() {
   iconifyContainer.append(input);
   iconifyContainer.append(icon);
   $(this.el).append(iconifyContainer);
+
+  const customIconifyContainer = $("<div />").addClass([
+    "icon-select__items",
+    "icon-select__items--iconify-icons",
+  ]);
+  const customIconifyIcons = Object.keys(customIconify).map((iconKey) => {
+    const icon = customIconify[iconKey];
+    return createIconEl(icon).addClass([
+      iconKey === this.model.iconId ? "icon-select__icon--active" : "",
+    ]);
+  });
+  customIconifyContainer.append(customIconifyIcons);
+  iconifyContainer.after(customIconifyContainer);
   return this;
 }
 
 function iconClick(e) {
   const target = $(e.target).closest(".icon-select__icon");
-  const iconId = target[0].getAttribute("data-val");
+  const iconId = target.data("val");
   if (iconId === "iconify") {
-    const iconData = this.special[target.data("special")];
+    const iconName = target.attr("icon");
+    const iconData = `#iconify#${iconName}`;
     if (iconData) {
-      const id = this.model.file.addCustomIcon(iconData.data);
+      const id = this.model.file.addCustomIcon(iconData);
       this.emit("select", { id, custom: true });
     }
     e.preventDefault();
