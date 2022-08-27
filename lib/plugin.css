@@ -1,0 +1,19 @@
+.icon-select__items--iconify {
+  padding-top: 1em;
+  border-top: 1px solid var(--light-border-color);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.icon-select__items--iconify input {
+  margin-bottom: 0;
+}
+.icon-select__items--iconify label {
+  font-weight: bold;
+}
+.icon-select__items--iconify .icon-select__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

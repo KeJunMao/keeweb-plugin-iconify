@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./screenshots/logo.png" />
+  <title>Keeweb Plugin Iconify</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+  <style>
+    body {
+      font-family: -apple-system, "BlinkMacSystemFont", "Raleway", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      font-feature-settings: "liga" 0;
+      text-align: center;
+      background: #F5F5F5;
+      font-weight: 300;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 10vh;
+    }
+
+    h1>span {
+      line-height: 65px;
+      vertical-align: top;
+    }
+
+    h2 {
+      font-size: 2em;
+      font-weight: 100;
+      margin: 1em;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      font-weight: 100;
+      margin-bottom: 1em;
+    }
+
+    hr {
+      margin: 1.5em 0;
+      height: 1px;
+      background: #e3e3e3;
+      border: none;
+    }
+
+    p {
+      line-height: 1.5em;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+    }
+
+    .icon {
+      display: inline-block;
+      overflow: hidden;
+      width: 64px;
+      height: 64px;
+      fill: #6386EC;
+      margin: 20px 10px;
+    }
+
+    .img-demo {
+      margin: 55px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    @media only screen and (max-width: 480px) {
+
+      p,
+      h1 {
+        margin-bottom: 1em;
+      }
+
+      img.img-install {
+        width: calc(100% - 40px) !important;
+        margin: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    #url {
+      color: #4257d0;
+      font-weight: bold;
+    }
+
+    .github-fork-ribbon:before {
+      background-color: #528BFF;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1><img src="./screenshots/logo.png" class="logo"> <span>Keeweb Plugin Iconify</span></h1>
+  <p>Set custom icon from Iconify</p>
+  <h2>How to install plugins</h2>
+  <p>Go to Settings → Plugins and Add plugin from URL: <i id="url"></i>
+  </p>
+  <img src="./screenshots/demo.png" style="width: 764px" class="img-demo">
+  <a class="github-fork-ribbon right-top" href="https://github.com/KeJunMao/keeweb-plugin-iconify"
+    data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
+  <script>
+    const url = document.querySelector('#url')
+    url.innerHTML = location.host
+  </script>
+</body>
+
+</html>
