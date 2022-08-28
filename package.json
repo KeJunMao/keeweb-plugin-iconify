@@ -3,7 +3,7 @@
   "description": "Set custom icon from Iconify",
   "manifestVersion": "0.1.0",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": {
     "name": "kejun",
