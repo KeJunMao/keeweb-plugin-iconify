@@ -14,7 +14,7 @@ function createIconEl(icon) {
       "data-special": "iconify",
       mode: "svg",
     })
-    .addClass("icon-select__icon")
+    .addClass("icon-select__icon fa")
     .clone(false, true);
 }
 

@@ -9,7 +9,7 @@ function createIconEl(icon) {
       "data-special": "iconify",
       mode: "svg",
     })
-    .addClass(["menu__item-icon", "menu__item-icon--iconify"])
+    .addClass(["menu__item-icon", "fa"])
     .clone(false, true);
 }
 

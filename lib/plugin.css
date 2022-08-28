@@ -6,30 +6,7 @@
   gap: 1em;
 }
 
-.icon-select__items--iconify input {
-  margin-bottom: 0;
-}
+.icon-select__items--iconify input,
 .icon-select__items--iconify label {
-  font-weight: bold;
-}
-.icon-select__items--iconify .icon-select__icon,
-.icon-select__items--iconify-icons .icon-select__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu__item-body {
-  display: flex;
-  align-items: center;
-}
-
-.menu__item-icon--iconify {
-  width: auto;
-  height: auto;
-  position: relative;
-  top: auto;
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.2em;
+  margin-bottom: 0;
 }
