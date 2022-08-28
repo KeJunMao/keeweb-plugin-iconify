@@ -1,6 +1,9 @@
+[build.environment]
+  NODE_VERSION = "16"
+  NPM_FLAGS = "--version" # prevent Netlify npm install
 [build]
   publish = "dist"
-  command = "echo $PRIVATE_KEY | sed 's/_/\\n/g' > private_key.pem && npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
+  command = "echo $PRIVATE_KEY | sed 's/_/\\n/g' > private_key.pem && npx pnpm i --store=node_modules/.pnpm-store --frozen-lockfile && npx pnpm build"
 [[headers]]
   for = "/*"
   [headers.values]
