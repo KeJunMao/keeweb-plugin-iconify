@@ -3,7 +3,7 @@
   "description": "Set custom icon from Iconify",
   "manifestVersion": "0.1.0",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": {
     "name": "kejun",
@@ -18,16 +18,15 @@
   "url": "https://github.com/KeJunMao/keeweb-plugin-iconify",
   "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4WvcI0V3x02yEJJOwFPJ6grd3XLR8Y6sUx6n/hh52Q+mFVuo0dXviC3wjYwGSUJMGXbUmffU9EwBQ1v/f1+Z+VhkEVJ94qn6BVyif4waZftHqxvu/fFxVAZhpaLpOBjwO2STcApIEwQU24AJHKItyZBMuwefuzmaIPTfna5VloZaluUUpQXigl7c6dG9y3rTbnNxFk6D7B33dvN3Ua3g3AwywO4v//qYVi/xcNRgkm03eqirJLZWzd7d2g81v0Q/EjkYll58FqTqbC4Xev/iwQDh4PNJdW8u2jLNgyTKPo4rxSuFnNJ7Rq3lm1vxg3ZuKVuXRnb/4azXQvvspplxpwIDAQAB",
   "scripts": {
-    "dev": "concurrently \"vite\" \"pnpm build -w\"",
-    "build": "tsc && vite build",
+    "dev": "concurrently \"vite build -w\" \"keeweb-plugin watch dist --private-key=private_key.pem\"",
+    "build": "tsc && vite build && keeweb-plugin sign dist --private-key=private_key.pem",
     "preview": "pnpm build && vite preview"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.14",
     "@types/node": "^18.7.13",
     "concurrently": "^7.3.0",
-    "http-proxy": "^1.18.1",
-    "serve-static": "^1.15.0",
+    "keeweb-plugin": "^0.1.12",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
   },

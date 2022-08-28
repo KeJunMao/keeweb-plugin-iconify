@@ -6,14 +6,7 @@
   gap: 1em;
 }
 
-.icon-select__items--iconify input {
-  margin-bottom: 0;
-}
+.icon-select__items--iconify input,
 .icon-select__items--iconify label {
-  font-weight: bold;
-}
-.icon-select__items--iconify .icon-select__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 0;
 }
